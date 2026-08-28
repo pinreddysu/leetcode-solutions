@@ -33,8 +33,6 @@ class Solution:
 
             r += 1
         return maxLength
-
-    #Optimized solution: since the solution does not care about substring only the length
     
 
 
