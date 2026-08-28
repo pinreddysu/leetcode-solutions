@@ -4,6 +4,9 @@ class Solution:
 
         maxProfit = 0
 
+        if len(prices) ==1:
+            return maxProfit
+
         while j < len(prices):
             if prices[j] - prices[i] < 0:
                 i+=1
