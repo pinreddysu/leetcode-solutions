@@ -1,5 +1,6 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        # return self.optimizedSolution(s)
         return self.betterSolution(s)
         # return self.bruteForceSolution(s)
     #Brute force: generating all the subarrays that unique
@@ -16,22 +17,27 @@ class Solution:
         return maxLength
     
     #Better Solution: expand when condition is met and shrink when its not
+    #if we use string the TC is o^2 because for subString[1:] there's a loop running to copy it so use set that way O(n) and o(1)
     def betterSolution(self, s):
-        l, r, subString = 0, 0, ""
+        l, r, subStringSet = 0, 0, set()
         maxLength = 0
 
         while r < len(s):
             
-            # print(subString)
-            while s[r] in subString:
-                subString = subString[1:]
+            while s[r] in subStringSet:
+                subStringSet.remove(s[l])
                 l+=1
             else:
-                subString+=s[r]
+                subStringSet.add(s[r])
                 maxLength = max(maxLength, r-l+1)
 
             r += 1
         return maxLength
+
+    #Optimized solution: since the solution does not care about substring only the length
+    
+
+
 
 
         
