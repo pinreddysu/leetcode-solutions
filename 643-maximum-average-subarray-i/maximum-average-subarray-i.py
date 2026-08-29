@@ -13,20 +13,19 @@ class Solution:
         print(maxAverage)
         return maxAverage
 
+    #Better Solution: For fixed window always calculate the initial amount till window size then start r from window size to entire list and run l to r since the window is fixed because when r reaches to end the gap must be k digits to the left for fixed window
     def betterSolution(self, nums, k):
         maxAverage = -math.inf
         l = 0
         r = k
         sumSubArray = sum(nums[:k])
         maxAverage = sumSubArray / k
-        print(maxAverage)
 
         while r < len(nums):
             if l < r:
                 sumSubArray -= nums[l]
                 l+=1
             sumSubArray += nums[r]
-            print(r)
             maxAverage = max(maxAverage, sumSubArray/k)
             r+=1
         return maxAverage
