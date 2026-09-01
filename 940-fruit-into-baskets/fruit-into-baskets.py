@@ -28,7 +28,7 @@ class Solution:
             else:
                 fruitsTaken[fruits[r]] +=1
             
-            while len(fruitsTaken.keys()) > 2:
+            if len(fruitsTaken.keys()) > 2:
                 fruitsTaken[fruits[l]] -= 1
                 if fruitsTaken[fruits[l]] == 0:
                     fruitsTaken.pop(fruits[l])
@@ -36,6 +36,6 @@ class Solution:
             
             if len(fruitsTaken.keys()) <= 2:
                 maxLen = max(maxLen, r-l+1)
-                r+=1
+            r+=1
         return maxLen
         
