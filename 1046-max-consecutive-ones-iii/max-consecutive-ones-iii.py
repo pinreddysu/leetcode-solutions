@@ -1,18 +1,21 @@
 class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
-        # maxLength = 0
-        # for i in range(len(nums)):
-        #     count = 0
-        #     for j in range(i, len(nums)):
-        #         if nums[j] == 0:
-        #             count+=1
-        #         if count <= k:
-        #             maxLength = max(maxLength, j-i+1)
-        #         else:
-        #             break
-        # print(maxLength)
-        # return maxLength
+        #return self.bruteForceSolution(nums, k)
         return self.optimizedSolution(nums, k)
+    
+    def bruteForceSolution(nums, k):
+        maxLength = 0
+        for i in range(len(nums)):
+            count = 0
+            for j in range(i, len(nums)):
+                if nums[j] == 0:
+                    count+=1
+                if count <= k:
+                    maxLength = max(maxLength, j-i+1)
+                else:
+                    break
+        print(maxLength)
+        return maxLength
 
     def optimizedSolution(self, nums, k):
         l = 0
