@@ -15,6 +15,24 @@ class Solution:
         # print(maxLen)
         # return maxLen
     
+        # l = 0
+        # r = 0
+        # maxLen = 0
+        # hashArr = [0] * 26
+
+        # while r < len(s):
+        #     hashArr[ord(s[r]) - ord('A')] += 1
+
+        #     while r - l + 1 - max(hashArr) > k:
+        #         hashArr[ord(s[l]) - ord('A')] -= 1
+        #         l+=1
+            
+        #     if r-l+1 - max(hashArr) <= k:
+        #         maxLen = max(maxLen, r-l+1)
+        #         r+=1
+        # print(maxLen)
+        # return maxLen
+
         l = 0
         r = 0
         maxLen = 0
@@ -23,12 +41,11 @@ class Solution:
         while r < len(s):
             hashArr[ord(s[r]) - ord('A')] += 1
 
-            while r - l + 1 - max(hashArr) > k:
+            if r-l+1 - max(hashArr) > k:
                 hashArr[ord(s[l]) - ord('A')] -= 1
                 l+=1
             
-            if r-l+1 - max(hashArr) <= k:
+            if r-l+1 -max(hashArr) <= k:
                 maxLen = max(maxLen, r-l+1)
-                r+=1
-        print(maxLen)
+            r+=1
         return maxLen
