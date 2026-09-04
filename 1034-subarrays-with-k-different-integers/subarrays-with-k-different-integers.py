@@ -1,5 +1,6 @@
 class Solution:
     def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
+        #Strategy 3
         return self.subArraysWithK(nums,k) - self.subArraysWithKMinusOne(nums, k)
     def subArraysWithK(self, nums, k):
         l =0
