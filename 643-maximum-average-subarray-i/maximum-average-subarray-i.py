@@ -17,16 +17,17 @@ class Solution:
     def betterSolution(self, nums, k):
         maxAverage = -math.inf
         l = 0
-        r = k
-        sumSubArray = sum(nums[:k])
-        maxAverage = sumSubArray / k
+        r = 0
+        sumSubArray = 0
 
         while r < len(nums):
-            if l < r:
+            sumSubArray += nums[r]
+
+            if r-l+1 == k:
+                maxAverage = max(maxAverage, sumSubArray/k)
+
                 sumSubArray -= nums[l]
                 l+=1
-            sumSubArray += nums[r]
-            maxAverage = max(maxAverage, sumSubArray/k)
             r+=1
         return maxAverage
 
