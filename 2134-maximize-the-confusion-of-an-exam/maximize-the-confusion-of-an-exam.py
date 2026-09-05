@@ -11,11 +11,11 @@ class Solution:
             else:
                 hashMap[answerKey[r]] += 1
             
-            while r-l+1 - max(hashMap.values()) > k:
+            if r-l+1 - max(hashMap.values()) > k:
                 hashMap[answerKey[l]] -= 1
                 l+=1
             if r-l+1 - max(hashMap.values()) <= k:
                 maxLen = max(maxLen, r-l+1)
-                r+=1
+            r+=1
         print(maxLen)
         return maxLen
