@@ -1,7 +1,8 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         # return self.bruteForceSolution(target, nums)
-        return self.betterSolution(target, nums)
+        # return self.betterSolution(target, nums)
+        return self.optimalSolution(target, nums)
     #Bruteforce does not work because of time limit exceeded
     def bruteForceSolution(self, target, nums):
         minLength = math.inf
@@ -36,8 +37,25 @@ class Solution:
             if r != len(nums):
                 r+=1
         if minLength == math.inf:
-            print(0)
             return 0
         else:
-            print(minLength)
             return minLength
+    def optimalSolution(self, target, nums):
+        l = 0
+        r = 0
+        targetSum = math.inf
+        sumSubArray = 0
+
+        while r < len(nums):
+            sumSubArray += nums[r]
+
+            while sumSubArray >= target:
+                targetSum = min(targetSum, r-l+1)
+                sumSubArray -= nums[l]
+                l+=1
+            
+            r+=1
+        print(targetSum)
+        if targetSum == math.inf:
+            return 0
+        return targetSum
