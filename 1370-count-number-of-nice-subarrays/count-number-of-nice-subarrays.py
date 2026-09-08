@@ -2,7 +2,8 @@ class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
         #Strategy 3
         # print(self.subArraysAtMostK(nums,k), self.subArraysAtMostKMinusOne(nums,k))
-        return self.subArraysAtMostK(nums,k) - self.subArraysAtMostKMinusOne(nums,k)
+        # return self.subArraysAtMostK(nums,k) - self.subArraysAtMostKMinusOne(nums,k)
+        return self.anotherSolution(nums, k) - self.anotherSolution(nums, k-1)
     def subArraysAtMostK(self, nums, k):
         l = 0
         r = 0
@@ -58,6 +59,25 @@ class Solution:
                 count+=r-l+1
             r+=1
         print(count)
+        return count
+    def anotherSolution(self, nums, k):
+        l = 0
+        r= 0
+        oddCount = 0
+        count = 0
+
+        while r < len(nums):
+            if nums[r] % 2 == 1:
+                oddCount +=1
+            
+            while oddCount > k:
+                if nums[l] %2 == 1:
+                    oddCount -= 1
+                l+=1
+            
+            if oddCount <= k:
+                count += r-l+1
+            r+=1
         return count
 
 
