@@ -3,10 +3,10 @@ class Solution:
         minLen = math.inf
 
         for i in range(len(nums)):
-            value = 0
+            orOperatorResult = 0
             for j in range(i, len(nums)):
-                value = value | nums[j]
-                if value >= k:
+                orOperatorResult = orOperatorResult | nums[j]
+                if orOperatorResult >= k:
                     minLen = min(minLen, j-i+1)
                     break
         print(minLen)
