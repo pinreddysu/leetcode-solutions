@@ -17,7 +17,8 @@ class Solution:
         -> Finding the longest window which has distinct characters
         '''
         # return self.bruteForceSolution(s)
-        return self.betterSolution(s)
+        # return self.betterSolution(s)
+        return self.optimalSolution(s)
 
     def bruteForceSolution(self, s):
         maxLen = 0
@@ -46,6 +47,29 @@ class Solution:
                 hashMap[s[r]] += 1
 
             while max(hashMap.values()) > 1:
+                hashMap[s[l]] -= 1
+                if hashMap[s[l]] == 0:
+                    hashMap.pop(s[l])
+                l+=1
+            
+            if max(hashMap.values()) <= 1:
+                maxLen = max(maxLen, r-l+1)
+            r+=1
+        return maxLen
+    
+    def optimalSolution(self, s):
+        hashMap = {}
+        maxLen = 0
+        l = 0
+        r = 0
+
+        while r < len(s):
+            if s[r] not in hashMap.keys():
+                hashMap[s[r]] = 1
+            else:
+                hashMap[s[r]] += 1
+
+            if max(hashMap.values()) > 1:
                 hashMap[s[l]] -= 1
                 if hashMap[s[l]] == 0:
                     hashMap.pop(s[l])
