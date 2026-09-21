@@ -1,6 +1,6 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        hashMap = {0:1}
+        hashMap = {0:1} #Limited to frequency storing for count
         preFixSum = 0
         count = 0
 
