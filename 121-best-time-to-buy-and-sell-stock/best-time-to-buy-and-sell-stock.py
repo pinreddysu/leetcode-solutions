@@ -9,7 +9,7 @@ class Solution:
         while right < len(prices):
             if prices[right] - prices[left] < 0:
                 left +=1
-                # right = left + 1
+                right = left + 1
             else:
                 maxProfit = max(maxProfit, prices[right] - prices[left])
                 right += 1
